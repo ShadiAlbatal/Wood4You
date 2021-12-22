@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ECUv3cc0Ecbil8fdayEY8ggKlix3c9kme/bH1GmpAMaMkHXE8sy0XPmPJzCX9bob+ceWx7FFi0tXSZO5A9knWA==",
+  "success": true,
+  "projectFilePath": "C:\\dotNetProj\\wood4you\\proj3\\proj3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ext-shadi.albatal\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

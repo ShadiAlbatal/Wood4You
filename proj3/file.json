@@ -1,0 +1,28 @@
+{
+    "Item": [
+    {
+        "name": "MDF",
+        "material": "Wood",
+        "quantity": 993,
+        "price": 145.54
+    },
+    {
+        "name": "Fujalusa",
+        "material": "Plastic",
+        "quantity": 543,
+        "price": 89.12
+    },
+    {
+        "name": "Teak",
+        "material": "Wook",
+        "quantity": 12,
+        "price": 215.34
+    },
+    {
+        "name": "s",
+        "material": "ss",
+        "quantity": 123,
+        "price": 215.314
+    }
+    ]
+}
