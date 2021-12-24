@@ -66,9 +66,12 @@ public class MainClass {
         }
 
 
-            Summary.CreateSummary(CustomerName, DueDate, Items);
-
-            
+                Invoice invoice = Summary.CreateSummary(CustomerName, DueDate, Items);
+                Console.WriteLine("Generating ur invoice");
+                var save = Convert.ToInt32(Console.ReadLine()); 
+                if (save == 1){
+                Summary.PrintSummary(invoice);
+                }
 
 
     }

@@ -72,6 +72,19 @@ using Newtonsoft.Json;
 
             }
 
+        public static void PrintSummary(Invoice invoice){
+            var InvoicePath =  "./jsons/" + invoice.SummaryId + ".json";
+            var myJsonString = File.ReadAllText(InvoicePath);
+
+            var myJsonObject = JsonConvert.DeserializeObject<Invoice>(myJsonString);
+            Console.WriteLine(myJsonObject.SummaryId);
+            Console.WriteLine(myJsonObject.CustomerName);
+            Console.WriteLine(myJsonObject.DueDate);
+            Console.WriteLine(myJsonObject.OrderItems);
+
+            Console.ReadLine();
+            }
+
 
 
 
