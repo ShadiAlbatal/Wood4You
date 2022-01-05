@@ -63,16 +63,16 @@ public class MainClass {
                 {
                     Console.WriteLine("will continue..");
                 }
+            }
+
+
+        Invoice invoice = Summary.CreateSummary(CustomerName, DueDate, Items);
+        Console.WriteLine("press 1 to print ur invoice");
+        int save = Convert.ToInt32(Console.ReadLine()); 
+        Console.WriteLine("Generating ur invoice");
+        if (save == 1){
+        Summary.PrintSummary(invoice);
         }
-
-
-                Invoice invoice = Summary.CreateSummary(CustomerName, DueDate, Items);
-                Console.WriteLine("Generating ur invoice");
-                var save = Convert.ToInt32(Console.ReadLine()); 
-                if (save == 1){
-                Summary.PrintSummary(invoice);
-                }
-
 
     }
 

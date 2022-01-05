@@ -3,8 +3,7 @@ using Newtonsoft.Json;
     public class Summary {
 
             public static int SummaryId;
-
-
+            public static int ItemId= 0;
         public static String GenerateID(){
                 
             String Date = DateTime.Now.ToString("yymmddhhmmss");
@@ -19,32 +18,19 @@ using Newtonsoft.Json;
             String ModificationDate = CreationDate;
             String ConfirmationDate = CreationDate;
             String savedAs = InvoiceID+".json";
-
-            // List<JsonPropreties> Items = new List<JsonPropreties>();
-            // Items.Add(Item);
-
-            Console.WriteLine("your Summary, '{0}', '{1}'", CustomerName, DueDate);
             Invoice invoice = new Invoice(){SummaryId=InvoiceID, CustomerName=CustomerName, DueDate=DueDate, CreationDate=CreationDate, ModificationDate=ModificationDate, ConfirmationDate=ConfirmationDate, savedAs=savedAs, OrderItems=Item};
-
             Console.WriteLine();
             SaveSummary(invoice);
             return invoice; 
         }
 
-        public static List<JsonPropreties> AddItdem(String StockName){
-            
-            JsonPropreties Item =  GetItem(StockName);
-            List<JsonPropreties> Items = new List<JsonPropreties>();
-            Items.Add(Item);
-            return Items;
-        }
-
         public static JsonPropreties AddItem(String StockName, int Quantity){
-            
             JsonPropreties FoundItem =  GetItem(StockName);
+            
+            ItemId = ItemId + 1;
             double ItemsPrice = (FoundItem.price* (double) Quantity);
             string ItemsMaterial = FoundItem.material;
-            JsonPropreties AddedItem = new JsonPropreties(){name=StockName, material=ItemsMaterial, quantity=Quantity, price=ItemsPrice};
+            JsonPropreties AddedItem = new JsonPropreties(){id=ItemId, name=StockName, material=ItemsMaterial, quantity=Quantity, price=ItemsPrice};
 
             return AddedItem;
         }
@@ -75,20 +61,22 @@ using Newtonsoft.Json;
         public static void PrintSummary(Invoice invoice){
             var InvoicePath =  "./jsons/" + invoice.SummaryId + ".json";
             var myJsonString = File.ReadAllText(InvoicePath);
-
             var myJsonObject = JsonConvert.DeserializeObject<Invoice>(myJsonString);
-            Console.WriteLine(myJsonObject.SummaryId);
-            Console.WriteLine(myJsonObject.CustomerName);
-            Console.WriteLine(myJsonObject.DueDate);
-            Console.WriteLine(myJsonObject.OrderItems);
-
-            Console.ReadLine();
+            var Items = myJsonObject.OrderItems;
+            double Total = 0;
+            Console.WriteLine("======================Invoice===============================");
+            Console.WriteLine(invoice);
+            Console.WriteLine("----------------------");
+            foreach(var Item in Items){
+                Total = Total + Item.price;
+                Console.WriteLine(Item);
             }
+            Console.WriteLine("----------------------");
+            Console.WriteLine("Total Price:" + Total);
+            Console.WriteLine("======================End===============================");
 
+        }
 
-
-
-        
 
 
 
@@ -99,11 +87,6 @@ using Newtonsoft.Json;
 
 
     }
-
-public class Matrix {
-
-}
-
 
 
 

@@ -17,7 +17,11 @@
 
         public List<JsonPropreties> OrderItems { get; set; }
 
+    public override string ToString()
+    {
 
+        return " SummaryId: " + SummaryId +" CustomerName: " + CustomerName + "   DueDate: " + DueDate + "   CreationDate:" + CreationDate;
+    }
         // public int quantity { get; set; }
             // public double price { get; set; }
 
