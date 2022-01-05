@@ -20,7 +20,7 @@
     public override string ToString()
     {
 
-        return " SummaryId: " + SummaryId +"   CustomerName: " + CustomerName + "   DueDate: " + DueDate + "   CreationDate:" + CreationDate + "   ConfirmationDate:" + ConfirmationDate+ "   ModificationDate:" + ModificationDate;
+        return " Summary Id: " + SummaryId +"   Customer Name: " + CustomerName + "   DueDate: " + DueDate + "   Creation Date:" + CreationDate + "   Confirmation Date:" + ConfirmationDate+ "   Updated Date:" + ModificationDate + "   Saved As:" + savedAs ;
     }
 
     }
