@@ -7,7 +7,6 @@ using Newtonsoft.Json;
         public static String GenerateID(){
                 
             String Date = DateTime.Now.ToString("yymmddhhmmss");
-            Console.WriteLine(Date);
             return Date;
             }
 
@@ -104,6 +103,7 @@ using Newtonsoft.Json;
             if (save == 1){
                 Console.WriteLine("Generating your Invoice....");
                 invoice.ModificationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
+                invoice.ConfirmationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
 
                 Console.WriteLine("======================Invoice===============================");
                 Console.WriteLine(invoice);

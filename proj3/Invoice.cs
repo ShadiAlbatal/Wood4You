@@ -20,9 +20,7 @@
     public override string ToString()
     {
 
-        return " SummaryId: " + SummaryId +" CustomerName: " + CustomerName + "   DueDate: " + DueDate + "   CreationDate:" + CreationDate + "   ConfirmationDate:" + ConfirmationDate;
+        return " SummaryId: " + SummaryId +"   CustomerName: " + CustomerName + "   DueDate: " + DueDate + "   CreationDate:" + CreationDate + "   ConfirmationDate:" + ConfirmationDate+ "   ModificationDate:" + ModificationDate;
     }
-        // public int quantity { get; set; }
-            // public double price { get; set; }
 
     }

@@ -12,9 +12,11 @@ public class MainClass {
         static void Main(string[] args){
 
             List<JsonPropreties> Items = new List<JsonPropreties>();
-            Console.WriteLine("enter: your name, duedate");
-                DueDate = Console.ReadLine();
+                Console.WriteLine("enter your full name");
                 CustomerName = Console.ReadLine();
+                Console.WriteLine("enter the duedate (yyyy-mm-dd)");
+                DueDate = Console.ReadLine();
+
                 bool switcher = true;
                 while (switcher)
                 {
