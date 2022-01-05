@@ -62,10 +62,27 @@ using Newtonsoft.Json;
 
         }
 
+        // public static JsonPropreties GetItem(String StockName){
+        //     List<JsonPropreties>ListOfItems = FindItem();
+        //     JsonPropreties FoundItems = null;
+        //     try
+        //     {
+        //         FoundItems = ListOfItems.Find(x => x.name.Contains(StockName));
+        //         Console.WriteLine("Item in Stock: '{0}', '{1}', '{2}', '{3}'", FoundItems.name, FoundItems.material, FoundItems.quantity, FoundItems.price);
+        //         return FoundItems;
+        //     }
+        //     catch(System.NullReferenceException)
+        //     {
+        //         Console.Write("Cannot divide by zero. Please try again.");
+        //         return null;
+        //     }
+        // }
+
         public static JsonPropreties GetItem(String StockName){
             List<JsonPropreties>ListOfItems = FindItem();
             JsonPropreties FoundItems = null;
             FoundItems = ListOfItems.Find(x => x.name.Contains(StockName));
+            Console.WriteLine("Item in Stock: '{0}', '{1}', '{2}', '{3}'", FoundItems.name, FoundItems.material, FoundItems.quantity, FoundItems.price);
             return FoundItems;
         }
 
