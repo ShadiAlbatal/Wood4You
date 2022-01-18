@@ -25,9 +25,7 @@ public class MainClass {
                     var Item = Summary.GetItem(StockName);
                     if (Item.name == StockName)
                     {
-                        // Console.WriteLine("press 1 to add it");
-                        // int add = Convert.ToInt32(Console.ReadLine()); 
-                        Console.WriteLine("enter: anything to exit, Enter to add it");
+                        Console.WriteLine(" Press 'Enter' to add it or Press 'any key' to exit");
                         String caser = Console.ReadLine();
                         bool switcher2 = true;
 
@@ -38,12 +36,9 @@ public class MainClass {
                         }
                         else
                         {
-                            // Console.WriteLine("how many you need:");
-                            // Quantity = Convert.ToInt32(Console.ReadLine());
-                            // JsonPropreties item = Summary.AddItem(StockName, Quantity);
                             JsonPropreties item = Summary.AddItem(StockName);
                             Items.Add(item);
-                            Console.WriteLine("press 'a' to add a new item , 'p' print your invoice draft");
+                            Console.WriteLine("press 'a' or 'any key' to add a new item , 'p' print your invoice draft");
                             String caser2 = Console.ReadLine();
                             if (caser2 == "a")
                             {

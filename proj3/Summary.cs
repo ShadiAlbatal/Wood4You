@@ -22,11 +22,9 @@ using Newtonsoft.Json;
             SaveSummary(invoice);
             return invoice; 
         }
-
             public static JsonPropreties AddItem(String StockName){
             try
             {
-            Console.WriteLine("from addITem");
             Console.WriteLine("how many you need:");
             int Quantity = Convert.ToInt32(Console.ReadLine());
             JsonPropreties FoundItem =  GetItem(StockName);
@@ -38,6 +36,7 @@ using Newtonsoft.Json;
                 string ItemsMaterial = FoundItem.material;
                 AddedItem = new JsonPropreties(){id=ItemId, name=StockName, material=ItemsMaterial, quantity=Quantity, price=ItemsPrice};
                 Console.WriteLine("Items in your card : '{0}', '{1}', '{2}', '{3}'", AddedItem.name, AddedItem.material, AddedItem.quantity, AddedItem.price);
+                // FoundItem.quantity = 1000000000; 
             }
             else
             {
@@ -53,41 +52,6 @@ using Newtonsoft.Json;
             }    
 
         }
-
-        // public static JsonPropreties AddItem(String StockName, int Quantity){
-        //     Console.WriteLine("from addITem");
-        //     Console.WriteLine("how many you need:");
-        //     Quantity = Convert.ToInt32(Console.ReadLine());
-        //     JsonPropreties FoundItem =  GetItem(StockName);
-        //     JsonPropreties AddedItem = new JsonPropreties();
-        //     try
-        //     {
-        //         if (FoundItem.quantity > Quantity)
-        //         {
-        //             ItemId = ItemId + 1;
-        //             double ItemsPrice = (FoundItem.price* (double) Quantity);
-        //             string ItemsMaterial = FoundItem.material;
-        //             AddedItem = new JsonPropreties(){id=ItemId, name=StockName, material=ItemsMaterial, quantity=Quantity, price=ItemsPrice};
-        //             Console.WriteLine("Items in your card : '{0}', '{1}', '{2}', '{3}'", AddedItem.name, AddedItem.material, AddedItem.quantity, AddedItem.price);
-        //         }
-        //         else
-        //         {
-        //             Console.WriteLine("you can add up to '{0}' of '{1}'", FoundItem.quantity ,FoundItem.name);
-        //         }
-        //         return AddedItem;
-        //     }
-        //     catch (System.FormatException)
-        //     {
-        //         Console.WriteLine("-------s---------------");
-        //         JsonPropreties noItem = new JsonPropreties();
-        //         Console.WriteLine("---------e-------------");
-        //         return noItem;
-                
-        //     }
- 
-        // }
-
-
         public static void SaveSummary(Invoice invoice){
 
             String fileName = invoice.SummaryId;
@@ -106,23 +70,6 @@ using Newtonsoft.Json;
             return ListOfItems;
 
         }
-
-        // public static JsonPropreties GetItem(String StockName){
-        //     List<JsonPropreties>ListOfItems = FindItem();
-        //     JsonPropreties FoundItems = null;
-        //     try
-        //     {
-        //         FoundItems = ListOfItems.Find(x => x.name.Contains(StockName));
-        //         Console.WriteLine("Item in Stock: '{0}', '{1}', '{2}', '{3}'", FoundItems.name, FoundItems.material, FoundItems.quantity, FoundItems.price);
-        //         return FoundItems;
-        //     }
-        //     catch(System.NullReferenceException)
-        //     {
-        //         Console.Write("Cannot divide by zero. Please try again.");
-        //         return null;
-        //     }
-        // }
-
         public static JsonPropreties GetItem(String StockName){
             List<JsonPropreties>ListOfItems = FindItem();
             JsonPropreties FoundItems = new JsonPropreties {};
@@ -155,34 +102,28 @@ using Newtonsoft.Json;
             Console.WriteLine("Total Price:" + Total);
             Console.WriteLine();
             Console.WriteLine("press 1 to confirm your order");
-            int save = Convert.ToInt32(Console.ReadLine()); 
+            int save = Convert.ToInt32(Console.ReadLine());
             if (save == 1){
                 Console.WriteLine("Generating your Invoice....");
                 invoice.ModificationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
                 invoice.ConfirmationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
-
+                Console.WriteLine();
                 Console.WriteLine("======================Invoice===============================");
+                Console.WriteLine("INFORMATION:");
                 Console.WriteLine(invoice);
                 Console.WriteLine("----------------------");
+                Console.WriteLine("ITEMS:");
                 foreach(var Item in Items){
                     Total = Total + Item.price;
                     Console.WriteLine(Item);
                 }
                 Console.WriteLine("----------------------");
-                Console.WriteLine("Total Price:" + Total);
+                Console.WriteLine("Total Price: " + Total);
                 Console.WriteLine("======================End===============================");
             }
+            Console.WriteLine();
             Console.WriteLine("Your order has been sent, we will contact you soon, thank you...");
         }
-
-
-
-
-
-
-
-
-
 
     }
 
