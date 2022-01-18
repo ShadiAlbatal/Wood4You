@@ -23,7 +23,12 @@ using Newtonsoft.Json;
             return invoice; 
         }
 
-        public static JsonPropreties AddItem(String StockName, int Quantity){
+            public static JsonPropreties AddItem(String StockName){
+            try
+            {
+            Console.WriteLine("from addITem");
+            Console.WriteLine("how many you need:");
+            int Quantity = Convert.ToInt32(Console.ReadLine());
             JsonPropreties FoundItem =  GetItem(StockName);
             JsonPropreties AddedItem = new JsonPropreties();
             if (FoundItem.quantity > Quantity)
@@ -39,7 +44,48 @@ using Newtonsoft.Json;
                 Console.WriteLine("you can add up to '{0}' of '{1}'", FoundItem.quantity ,FoundItem.name);
             }
             return AddedItem;
+            }
+            catch (System.FormatException)
+            {
+                JsonPropreties noItem = new JsonPropreties();
+                Console.WriteLine("Enter a valid number");
+                return noItem;
+            }    
+
         }
+
+        // public static JsonPropreties AddItem(String StockName, int Quantity){
+        //     Console.WriteLine("from addITem");
+        //     Console.WriteLine("how many you need:");
+        //     Quantity = Convert.ToInt32(Console.ReadLine());
+        //     JsonPropreties FoundItem =  GetItem(StockName);
+        //     JsonPropreties AddedItem = new JsonPropreties();
+        //     try
+        //     {
+        //         if (FoundItem.quantity > Quantity)
+        //         {
+        //             ItemId = ItemId + 1;
+        //             double ItemsPrice = (FoundItem.price* (double) Quantity);
+        //             string ItemsMaterial = FoundItem.material;
+        //             AddedItem = new JsonPropreties(){id=ItemId, name=StockName, material=ItemsMaterial, quantity=Quantity, price=ItemsPrice};
+        //             Console.WriteLine("Items in your card : '{0}', '{1}', '{2}', '{3}'", AddedItem.name, AddedItem.material, AddedItem.quantity, AddedItem.price);
+        //         }
+        //         else
+        //         {
+        //             Console.WriteLine("you can add up to '{0}' of '{1}'", FoundItem.quantity ,FoundItem.name);
+        //         }
+        //         return AddedItem;
+        //     }
+        //     catch (System.FormatException)
+        //     {
+        //         Console.WriteLine("-------s---------------");
+        //         JsonPropreties noItem = new JsonPropreties();
+        //         Console.WriteLine("---------e-------------");
+        //         return noItem;
+                
+        //     }
+ 
+        // }
 
 
         public static void SaveSummary(Invoice invoice){

@@ -5,7 +5,7 @@ public class MainClass {
             private static String CustomerName;
             private static String StockName;
             private static String DueDate;
-            private static int Quantity;
+            // private static int Quantity;
             private String VAT;
 
 
@@ -38,9 +38,10 @@ public class MainClass {
                         }
                         else
                         {
-                            Console.WriteLine("how many you need:");
-                            Quantity = Convert.ToInt32(Console.ReadLine());
-                            JsonPropreties item = Summary.AddItem(StockName, Quantity);
+                            // Console.WriteLine("how many you need:");
+                            // Quantity = Convert.ToInt32(Console.ReadLine());
+                            // JsonPropreties item = Summary.AddItem(StockName, Quantity);
+                            JsonPropreties item = Summary.AddItem(StockName);
                             Items.Add(item);
                             Console.WriteLine("press 'a' to add a new item , 'p' print your invoice draft");
                             String caser2 = Console.ReadLine();
