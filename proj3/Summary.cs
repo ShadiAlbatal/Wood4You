@@ -2,8 +2,8 @@ using Newtonsoft.Json;
 
     public class Summary {
 
-            public static int SummaryId;
-            public static int ItemId= 0;
+        private static int SummaryId;
+        private static int ItemId= 0;
         public static String GenerateID(){
                 
             String Date = DateTime.Now.ToString("yymmddhhmmss");
@@ -79,10 +79,20 @@ using Newtonsoft.Json;
 
         public static JsonPropreties GetItem(String StockName){
             List<JsonPropreties>ListOfItems = FindItem();
-            JsonPropreties FoundItems = null;
-            FoundItems = ListOfItems.Find(x => x.name.Contains(StockName));
-            Console.WriteLine("Item in Stock: '{0}', '{1}', '{2}', '{3}'", FoundItems.name, FoundItems.material, FoundItems.quantity, FoundItems.price);
-            return FoundItems;
+            JsonPropreties FoundItems = new JsonPropreties {};
+            try
+            {
+                FoundItems = ListOfItems.Find(x => x.name.Contains(StockName));
+                Console.WriteLine("Item in Stock: '{0}', '{1}', '{2}', '{3}'", FoundItems.name, FoundItems.material, FoundItems.quantity, FoundItems.price);
+                return FoundItems;
+            }
+            catch (System.NullReferenceException)
+            {
+                JsonPropreties noItem = new JsonPropreties {};
+                Console.WriteLine("We did not find this Item, try again");
+                return noItem;
+            }
+
         }
 
         public static void PrintSummary(Invoice invoice){

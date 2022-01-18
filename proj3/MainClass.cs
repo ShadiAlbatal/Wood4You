@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 public class MainClass {
 
-            public static int SummaryId;
-            public static String CustomerName;
-            public static String StockName;
-            public static String DueDate;
-            public static int Quantity;
-            public String VAT;
+            private static int SummaryId;
+            private static String CustomerName;
+            private static String StockName;
+            private static String DueDate;
+            private static int Quantity;
+            private String VAT;
 
 
         static void Main(string[] args){
