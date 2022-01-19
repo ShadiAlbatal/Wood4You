@@ -45,10 +45,10 @@ using Newtonsoft.Json.Linq;
             JObject obj = JObject.Parse(myJsonString);
             JArray item = (JArray)obj["Item"];
             //TODO needs to impelemnt the search for index
-            Console.WriteLine(item[0]["quantity"]);
+            // Console.WriteLine(item[0]["quantity"]);
             item[0]["quantity"] = newQuantity;
-            Console.WriteLine(item[0]["quantity"]);
-            Console.WriteLine(item);
+            // Console.WriteLine(item[0]["quantity"]);
+            // Console.WriteLine(item);
 
 
         }
