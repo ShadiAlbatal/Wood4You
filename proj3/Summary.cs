@@ -5,13 +5,28 @@ using Newtonsoft.Json.Linq;
 
         private static int SummaryId;
         private static int ItemId= 0;
-        public static String GenerateID(){
+        private static String GenerateID(){
                 
             String Date = DateTime.Now.ToString("yymmddhhmmss");
             return Date;
             }
 
-        public static Invoice CreateSummary(String CustomerName, String DueDate, List<JsonPropreties> Item){
+        // public static DateTime dueDate(){
+        //     DateTime DueDate;
+        //     try
+        //     {
+        //     string pattern = "M/dd/yyyy";
+        //      DueDate = DateTime.ParseExact(Console.ReadLine(), pattern, null);
+        //     return DueDate;
+        //     }
+        //     catch (System.FormatException)
+        //     {
+        //     Console.WriteLine("enter the duedate 'M/dd/yyyy'");
+        //     return ;
+        //     }
+        // }
+
+        public static Invoice CreateSummary(String CustomerName, DateTime DueDate, List<JsonPropreties> Item){
 
             String CreationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
             String InvoiceID = GenerateID();
@@ -23,8 +38,6 @@ using Newtonsoft.Json.Linq;
             SaveSummary(invoice);
             return invoice; 
         }
-
-        // public static void modifyItem(String stockName,long newQuantity){
         public static void modifyItem(string stockName, int newQuantity){
 
             // this function is aimed to modify the quantity of item in the json file, still not finished yet.
@@ -128,7 +141,7 @@ using Newtonsoft.Json.Linq;
                 invoice.ConfirmationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
                 Console.WriteLine();
                 Console.WriteLine("=====================================================================");
-                Console.WriteLine("                               Invoice                               ");
+                Console.WriteLine("|                              Invoice                              |");
                 Console.WriteLine("=====================================================================");
                 Console.WriteLine("------------------------------------------------------------------");
                 Console.WriteLine("INFORMATION:");
@@ -142,7 +155,7 @@ using Newtonsoft.Json.Linq;
                 Console.WriteLine("------------------------------------------------------------------");
                 Console.WriteLine("Total Price: " + Total);
                 Console.WriteLine("=====================================================================");
-                Console.WriteLine("                                End                                  ");
+                Console.WriteLine("|                               End                                 |");
                 Console.WriteLine("=====================================================================");
             }
             Console.WriteLine();

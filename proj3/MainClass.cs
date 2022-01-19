@@ -4,23 +4,36 @@ public class MainClass {
             private static int SummaryId;
             private static String CustomerName;
             private static String StockName;
-            private static String DueDate;
-            // private static int Quantity;
+            private static DateTime DueDate;
             private String VAT;
 
 
         static void Main(string[] args){
 
             List<JsonPropreties> Items = new List<JsonPropreties>();
-                Console.WriteLine("enter your full name");
+                Console.WriteLine("Enter your full name");
                 CustomerName = Console.ReadLine();
-                Console.WriteLine("enter the duedate (yyyy-mm-dd)");
-                DueDate = Console.ReadLine();
+                Console.WriteLine("enter the duedate ");
+                bool dateFormat = true;
+                while (dateFormat){
+                try
+                    {
+                        string pattern = "dd-mm-yyyy";
+                        DueDate = DateTime.ParseExact(Console.ReadLine(), pattern, null);
+                        dateFormat = false;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Enter due date in corrent format, example: 02-11-2021");
+                    }
+                }
+
+
 
                 bool switcher = true;
                 while (switcher)
                 {
-                    Console.WriteLine("enter name of item you looking for:");
+                    Console.WriteLine("Enter name of item you looking for:");
                     String StockName = Console.ReadLine();
                     var Item = Summary.GetItem(StockName);
                     if (Item.name == StockName)
@@ -38,7 +51,7 @@ public class MainClass {
                         {
                             JsonPropreties item = Summary.AddItem(StockName);
                             Items.Add(item);
-                            Console.WriteLine("press 'a' or 'any key' to add a new item , 'p' print your invoice draft, test modify press 'm' ");
+                            Console.WriteLine("Press 'a' or 'any key' to add a new item or Press 'p' print your invoice draft ");
                             String caser2 = Console.ReadLine();
                             if (caser2 == "a")
                             {

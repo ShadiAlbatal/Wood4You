@@ -1,6 +1,12 @@
 {
     "Item": [
     {
+        "name": "d",
+        "material": "Wocd",
+        "quantity": 0,
+        "price": 15.54
+    },
+    {
         "name": "MDF",
         "material": "Wood",
         "quantity": 993,
