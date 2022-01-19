@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
     public class Summary {
 
@@ -22,6 +23,22 @@ using Newtonsoft.Json;
             SaveSummary(invoice);
             return invoice; 
         }
+
+        // public static void modifyItem(String stockName,long newQuantity){
+        public static void modifyItem(string stockName, int newQuantity){
+
+            // this function is aimed to modify the quantity of item in the json file, still not finished yet.
+            var myJsonString = File.ReadAllText("file.json");
+            JObject obj = JObject.Parse(myJsonString);
+            JArray item = (JArray)obj["Item"];
+            //TODO needs to impelemnt the search for index
+            Console.WriteLine(item[0]["quantity"]);
+            item[0]["quantity"] = newQuantity;
+            Console.WriteLine(item[0]["quantity"]);
+            Console.WriteLine(item);
+
+
+        }
             public static JsonPropreties AddItem(String StockName){
             try
             {
@@ -36,7 +53,9 @@ using Newtonsoft.Json;
                 string ItemsMaterial = FoundItem.material;
                 AddedItem = new JsonPropreties(){id=ItemId, name=StockName, material=ItemsMaterial, quantity=Quantity, price=ItemsPrice};
                 Console.WriteLine("Items in your card : '{0}', '{1}', '{2}', '{3}'", AddedItem.name, AddedItem.material, AddedItem.quantity, AddedItem.price);
-                // FoundItem.quantity = 1000000000; 
+                int newQuantity = FoundItem.quantity - Quantity;
+                //TODO modifyItem should be moved to after confirmation in future....
+                modifyItem(StockName, newQuantity);
             }
             else
             {
@@ -108,18 +127,23 @@ using Newtonsoft.Json;
                 invoice.ModificationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
                 invoice.ConfirmationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
                 Console.WriteLine();
-                Console.WriteLine("======================Invoice===============================");
+                Console.WriteLine("=====================================================================");
+                Console.WriteLine("                               Invoice                               ");
+                Console.WriteLine("=====================================================================");
+                Console.WriteLine("------------------------------------------------------------------");
                 Console.WriteLine("INFORMATION:");
                 Console.WriteLine(invoice);
-                Console.WriteLine("----------------------");
+                Console.WriteLine("------------------------------------------------------------------");
                 Console.WriteLine("ITEMS:");
                 foreach(var Item in Items){
                     Total = Total + Item.price;
                     Console.WriteLine(Item);
                 }
-                Console.WriteLine("----------------------");
+                Console.WriteLine("------------------------------------------------------------------");
                 Console.WriteLine("Total Price: " + Total);
-                Console.WriteLine("======================End===============================");
+                Console.WriteLine("=====================================================================");
+                Console.WriteLine("                                End                                  ");
+                Console.WriteLine("=====================================================================");
             }
             Console.WriteLine();
             Console.WriteLine("Your order has been sent, we will contact you soon, thank you...");

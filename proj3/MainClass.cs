@@ -38,7 +38,7 @@ public class MainClass {
                         {
                             JsonPropreties item = Summary.AddItem(StockName);
                             Items.Add(item);
-                            Console.WriteLine("press 'a' or 'any key' to add a new item , 'p' print your invoice draft");
+                            Console.WriteLine("press 'a' or 'any key' to add a new item , 'p' print your invoice draft, test modify press 'm' ");
                             String caser2 = Console.ReadLine();
                             if (caser2 == "a")
                             {
@@ -50,8 +50,6 @@ public class MainClass {
                                 Summary.PrintSummary(invoice);
                                 break;
                             }
-
-
                         }
                     }
 
