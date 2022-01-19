@@ -20,10 +20,10 @@
     public override string ToString()
     {
 
-        return " Summary Id: " + SummaryId +"   Customer Name: " + CustomerName + "\n"
-        + "   DueDate: " + DueDate + "   Creation Date:" + CreationDate + "\n"
-        + "   Confirmation Date:" + ConfirmationDate+ "   Updated Date:" + "\n"
-        + ModificationDate + "   Saved As:" + savedAs ;
+        return " Summary Id: " + SummaryId +"               Customer Name: " + CustomerName + "\n"
+        + " DueDate: " + DueDate + "         Creation Date: " + CreationDate + "\n"
+        + " Confirmation Date: " + ConfirmationDate+ "   Updated Date: " + ModificationDate + "\n"
+        + " Saved As: " + savedAs ;
     }
 
     }

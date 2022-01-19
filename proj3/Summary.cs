@@ -140,23 +140,22 @@ using Newtonsoft.Json.Linq;
                 invoice.ModificationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
                 invoice.ConfirmationDate = DateTime.Now.ToString("yy/mm/dd-hh:mm:ss");
                 Console.WriteLine();
-                Console.WriteLine("=====================================================================");
-                Console.WriteLine("|                              Invoice                              |");
-                Console.WriteLine("=====================================================================");
-                Console.WriteLine("------------------------------------------------------------------");
+                Console.WriteLine("==========================================================================");
+                Console.WriteLine("|                              Invoice                                   |");
+                Console.WriteLine("==========================================================================");
                 Console.WriteLine("INFORMATION:");
                 Console.WriteLine(invoice);
-                Console.WriteLine("------------------------------------------------------------------");
+                Console.WriteLine("--------------------------------------------------------------------------");
                 Console.WriteLine("ITEMS:");
                 foreach(var Item in Items){
                     Total = Total + Item.price;
                     Console.WriteLine(Item);
                 }
-                Console.WriteLine("------------------------------------------------------------------");
+                Console.WriteLine("--------------------------------------------------------------------------");
                 Console.WriteLine("Total Price: " + Total);
-                Console.WriteLine("=====================================================================");
-                Console.WriteLine("|                               End                                 |");
-                Console.WriteLine("=====================================================================");
+                Console.WriteLine("==========================================================================");
+                Console.WriteLine("|                               End                                      |");
+                Console.WriteLine("==========================================================================");
             }
             Console.WriteLine();
             Console.WriteLine("Your order has been sent, we will contact you soon, thank you...");
